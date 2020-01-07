@@ -1,1 +1,1 @@
-docker rmi docker images -qa
+docker image rm --force $(docker image ls --all --quiet)

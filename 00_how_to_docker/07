@@ -1,1 +1,1 @@
-pect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' overlord
+docker container inspect --format '{{ .NetworkSettings.IPAddress }}' overlord

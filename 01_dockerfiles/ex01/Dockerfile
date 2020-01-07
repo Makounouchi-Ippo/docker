@@ -1,13 +1,28 @@
-FROM debian
+FROM debian:latest
 
-RUN apt-get update -y && apt-get install -y bzip2
-WORKDIR /opt
-ADD http://dl.4players.de/ts/releases/3.0.13.6/teamspeak3-server_linux_amd64-3.0.13.6.tar.bz2 .
-RUN tar xvjf teamspeak3-server_linux_amd64-3.0.13.6.tar.bz2
-RUN useradd -m teamspeak3-user
-RUN chown teamspeak3-user -R teamspeak3-server_linux_amd64
-RUN rm -rf teamspeak3-server_linux_amd64-3.0.13.6.tar.bz2
+MAINTAINER Aslan MALSAGOV <amalsago@student.42.fr>
 
-EXPOSE 9987 30033 10011
+ENV TS3SERVER_LICENSE=accept
 
-CMD ["su", "teamspeak3-user", "/opt/teamspeak3-server_linux_amd64/ts3server_minimal_runscript.sh", "serveradmin_password=password"]
+EXPOSE 9987/udp 10011/tcp 30033/tcp
+
+RUN apt-get -qq update && \
+    apt-get -qq upgrade && \
+    apt-get -qq install wget bzip2 && \
+    rm -rf /var/lib/apt/lists/* && \
+    apt-get clean
+
+RUN groupadd -r teamspeak && \
+    useradd -r -m -g teamspeak teamspeak
+
+USER teamspeak
+
+WORKDIR /home/teamspeak
+
+RUN wget https://files.teamspeak-services.com/releases/server/3.5.1/teamspeak3-server_linux_amd64-3.5.1.tar.bz2 && \
+    tar xvf teamspeak3-server_linux_amd64-3.5.1.tar.bz2 && \
+    rm teamspeak3-server_linux_amd64-3.5.1.tar.bz2
+
+WORKDIR /home/teamspeak/teamspeak3-server_linux_amd64
+
+CMD ["/home/teamspeak/teamspeak3-server_linux_amd64/ts3server_minimal_runscript.sh"]

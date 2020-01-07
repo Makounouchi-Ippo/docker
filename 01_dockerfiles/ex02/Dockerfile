@@ -1,11 +1,15 @@
 FROM ruby:2.3
 
-RUN ["apt-get", "update"]
-RUN ["apt-get", "install", "-y", "sqlite3"]
-RUN ["gem", "install", "rails"]
+MAINTAINER Aslan MALSAGOV <amalsago@student.42.fr>
 
-ONBUILD COPY [".", "/opt/app"]
+RUN apt-get -y update && \
+    apt-get -y upgrade && \
+    apt-get -y install build-essential libpq-dev nodejs sqlite3 rails && \
+    rm -rf /var/lib/apt/lists/* && \
+    apt-get clean
+
+ONBUILD COPY app /opt/app
 ONBUILD WORKDIR /opt/app
-
-ONBUILD RUN gem install bundler rails && bundle install --jobs 20 --retry 5
-ONBUILD EXPOSE 3000
+ONBUILD RUN bundle update && bundle install
+ONBUILD RUN rake db:migrate
+ONBUILD RUN rake db:seed

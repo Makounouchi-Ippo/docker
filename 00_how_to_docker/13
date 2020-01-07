@@ -1,1 +1,1 @@
-docker inspect spawning-pool -f "{{ .Config.Env }}"
+docker container exec spawning-pool env

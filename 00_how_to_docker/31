@@ -1,2 +1,1 @@
-docker service ls -q
-docker service rm fxd4o1phd4jj wwm155o9fy2y o67bwyof9ba4
+docker service rm $(docker service ls --quiet)

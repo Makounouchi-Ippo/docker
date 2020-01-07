@@ -1,3 +1,1 @@
 docker service ps marines
-docker service ps marines -f "name=marines.1" -q
-#docker-machine ssh Char "docker service logs 3a5b8psvgmrhntuavvbzm6zjo  --follow" --> permet de voir l"attaque de la marine sur zerg.

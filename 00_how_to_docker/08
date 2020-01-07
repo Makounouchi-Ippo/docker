@@ -1,1 +1,1 @@
-docker run -it --rm alpine
+docker container run --rm --interactive --tty alpine /bin/sh
