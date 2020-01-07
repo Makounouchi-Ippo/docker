@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
 
-MAINTAINER Aslan MALSAGOV <amalsago@student.42.fr>
+MAINTAINER Mehdi El kaddouri <mehel-ka@student.42.fr>
 
 RUN apt-get update \
 	&& apt-get -y upgrade \
