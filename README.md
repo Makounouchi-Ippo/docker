@@ -1,3 +1,2 @@
-Docker-1 a pour but de faire manipuler docker et docker-machine, la base pour
-comprendre le principe de la containerisation de services. Voyez ce projet comme une
-initiation>
+docker
+🐳Premier projet sur Docker. J'apprends à penser dans des conteneurs à travers ce projet, qui va gérer le docker bin et créer mes premiers conteneurs avec Dockerfiles
