@@ -1,6 +1,6 @@
 FROM debian:latest
 
-MAINTAINER Aslan MALSAGOV <amalsago@student.42.fr>
+MAINTAINER Mehdi El kaddouri <mehel-ka@student.42.fr>
 
 ENV TS3SERVER_LICENSE=accept
 
