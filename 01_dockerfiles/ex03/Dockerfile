@@ -24,14 +24,14 @@ RUN mkdir -p /etc/gitlab/ssl \
 			-x509 \
 			-days 365 \
 			-newkey rsa:2048 -nodes \
-			-keyout /etc/gitlab/ssl/aslan.gitlab.key \
-			-out /etc/gitlab/ssl/aslan.gitlab.crt \
+			-keyout /etc/gitlab/ssl/mehel-ka.gitlab.key \
+			-out /etc/gitlab/ssl/mehel-ka.gitlab.crt \
 			-subj "/C=FR/ST=IDF/L=Paris/O=42/CN=www.aslan.gitlab.com"
 
 RUN echo "external_url \"https://aslan.gitlab.com\"" >> /etc/gitlab/gitlab.rb \
 	&& echo "nginx['redirect_http_to_https'] = true" >> /etc/gitlab/gitlab.rb \
-	&& echo "nginx['ssl_certificate'] = \"/etc/gitlab/ssl/aslan.gitlab.crt\"" >> /etc/gitlab/gitlab.rb \
-	&& echo "nginx['ssl_certificate_key'] = \"/etc/gitlab/ssl/aslan.gitlab.key\"" >> /etc/gitlab/gitlab.rb
+	&& echo "nginx['ssl_certificate'] = \"/etc/gitlab/ssl/mehel-ka.gitlab.crt\"" >> /etc/gitlab/gitlab.rb \
+	&& echo "nginx['ssl_certificate_key'] = \"/etc/gitlab/ssl/mehel-ka.gitlab.key\"" >> /etc/gitlab/gitlab.rb
 
 EXPOSE 22 80 443
 
