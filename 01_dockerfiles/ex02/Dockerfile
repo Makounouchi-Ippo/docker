@@ -1,6 +1,6 @@
 FROM ruby:2.3
 
-MAINTAINER Aslan MALSAGOV <amalsago@student.42.fr>
+MAINTAINER Mehdi El kaddouri <mehel-ka@student.42.fr>
 
 RUN apt-get -y update && \
     apt-get -y upgrade && \
